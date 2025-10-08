@@ -2,7 +2,7 @@
 ! Title: 豆腐フィルタ
 ! Homepage: http://tofukko.r.ribbon.to/abp.html
 !
-! 最終更新 2025/09/12 6:37
+! 最終更新 2025/10/08 9:57
 !
 
 ! 2025/09/21 2025年10月31日 Xfolioと統合？
@@ -610,9 +610,6 @@ _ads.js.
 ||arban-mag.com/wp-content/themes/arban_v2.5/common/js/ad.js
 ||artstation.com/p/c_assets/
 ||asageifuzoku.com/img*/top_
-||atwiki.jp/common/dist/js/amazon_flux.js?
-||atwiki.jp/common/dist/js/atwiki_autoads.js?
-||atwiki.jp/common/dist/js/moveads.js?
 ! jack
 ||automaton-media.com/wp-content/plugins/wpsite-background-takeover-master/js/wpsite_clickable.js
 ||b9good.*/block-ads/
@@ -1369,16 +1366,6 @@ at-s.com##.sideBannerGA01
 at-s.com##.sidePicup
 at-s.com##.topMainBannerGA01
 atelier-handmade.com###subservicelogo_wrap
-atwiki.jp###ads
-atwiki.jp###body_footer .lazy
-atwiki.jp###recommend
-atwiki.jp##.ads
-atwiki.jp##.atwiki-ads
-atwiki.jp##.atwiki-ads-margin
-atwiki.jp##.atwiki_ads
-atwiki.jp##.atwiki-ads-pc-overlay
-atwiki.jp##[id^="advp"]
-atwiki.jp##div[style="width: 160px;height:600px"]
 !article
 auone.jp##.rectangle-ad
 auone.jp##.side__ad-box
@@ -3588,6 +3575,19 @@ asg.to##+js(nowoif)
 asianoneta.blog.jp##.ad
 asianoneta.blog.jp##.ad_topress
 
+! --- atwiki.jp --- !
+||atwiki.jp/common/dist/js/amazon_flux.js
+||atwiki.jp/common/dist/js/atwiki_autoads.js
+||atwiki.jp/common/dist/js/moveads.js
+atwiki.jp###ads
+atwiki.jp###recommend
+atwiki.jp##.ads
+atwiki.jp##.atwiki-ads
+atwiki.jp##.atwiki-ads-margin
+atwiki.jp##.atwiki_ads
+! https://github.com/uBlockOrigin/uAssets/issues/19285
+atwiki.jp###atwiki-ads-overlay:remove()
+
 ! --- aucfan.com --- !
 ||aucfan.com/search/nativead_
 ||aucfan.com/addparts/kanren_
@@ -5187,7 +5187,7 @@ dic.nicovideo.jp###right-column[style]:style(height: auto !important;)
 !コモンズ
 com.nicovideo.jp###community_pc_top
 ! https://github.com/AdguardTeam/AdguardFilters/issues/150552
-||ads.nicovideo.jp/assets/js/ads2.js$domain=com.nicovideo.jp
+@@||ads.nicovideo.jp/assets/js/ads2.js$domain=com.nicovideo.jp
 !チャンネル
 ch.nicovideo.jp##.ads_nicovideo
 !ニコニコインフォ
@@ -5196,11 +5196,11 @@ blog.nicovideo.jp#?#.is-pc.l-aside-item > .l-aside-item-inner:-abp-has(> .l-asid
 !ニュース
 news.nicovideo.jp###billboard_container
 
-||securepubads.g.doubleclick.net/tag/js/gpt.js$script,domain=blog.nicovideo.jp
-||securepubads.g.doubleclick.net/pagead/managed/js/gpt/*/pubads_impl.js$script,domain=blog.nicovideo.jp
-||securepubads.g.doubleclick.net/gampad/ads?$xhr,domain=blog.nicovideo.jp
-||safeframe.googlesyndication.com/safeframe/$subdocument,domain=blog.nicovideo.jp
-||tpc.googlesyndication.com/pagead/js/*/elements/html/interstitial_ad_frame_fy2021.js$script,domain=safeframe.googlesyndication.com
+@@||securepubads.g.doubleclick.net/tag/js/gpt.js$script,domain=blog.nicovideo.jp
+@@||securepubads.g.doubleclick.net/pagead/managed/js/gpt/*/pubads_impl.js$script,domain=blog.nicovideo.jp
+@@||securepubads.g.doubleclick.net/gampad/ads?$xhr,domain=blog.nicovideo.jp
+@@||safeframe.googlesyndication.com/safeframe/$subdocument,domain=blog.nicovideo.jp
+@@||tpc.googlesyndication.com/pagead/js/*/elements/html/interstitial_ad_frame_fy2021.js$script,domain=safeframe.googlesyndication.com
 
 ! --- nifty --- !
 ||analytics.cocolog-nifty.com^
@@ -12356,12 +12356,12 @@ www.4gamer.net##.live_alert_popup
 !END--------------------------------------------------
 
 ![Adblock Plus 2.0]
-! Checksum: IM6MuPL4Hbsv+wNUcGWvVQ
-! Diff-Path: ../patches/204_optimized/204_optimized-s-1758329533-14400.patch
+! Checksum: 7ZFSJRx0UOfq6B61D3/96Q
+! Diff-Path: ../patches/204_optimized/204_optimized-s-1759841380-14400.patch
 ! Title: Peter Lowe's Blocklist (Optimized)
 ! Description: Filter that blocks ads, trackers, and other nasty things.
-! Version: 2.0.18.6
-! TimeUpdated: 2025-09-20T00:47:38+00:00
+! Version: 2.0.18.12
+! TimeUpdated: 2025-10-07T12:45:18+00:00
 ! Expires: 5 days (update frequency)
 ||101com.com^
 ||180hits.de^
@@ -12401,6 +12401,7 @@ www.4gamer.net##.live_alert_popup
 ||a.ucoz.net^
 ||a.ucoz.ru^
 ||a.vartoken.com^
+||a.vdo.ai^
 ||a.vfghd.com^
 ||a.vfgtb.com^
 ||a.xanga.com^
@@ -12424,6 +12425,7 @@ www.4gamer.net##.live_alert_popup
 ||abtasty.com^
 ||ac.rnm.ca^
 ||accountsdoor.com^
+||acebunny.com^
 ||acemlnb.com^
 ||acobt.tech^
 ||acridtwist.com^
@@ -12558,6 +12560,7 @@ www.4gamer.net##.live_alert_popup
 ||add.newmedia.cz^
 ||addfreestats.com^
 ||addme.com^
+||ade.clmbtech.com^
 ||adecn.com^
 ||adeimptrck.com^
 ||ademails.com^
@@ -12581,6 +12584,7 @@ www.4gamer.net##.live_alert_popup
 ||adhese.com^
 ||adhigh.net^
 ||adhoc4.net^
+||adhub.media^
 ||adhunter.media^
 ||adimage.guardian.co.uk^
 ||adimages.been.com^
@@ -12637,7 +12641,6 @@ www.4gamer.net##.live_alert_popup
 ||admidadsp.com^
 ||adminder.com^
 ||adminshop.com^
-||admix.in^
 ||admixer.net^
 ||admized.com^
 ||admob.com^
@@ -12714,7 +12717,6 @@ www.4gamer.net##.live_alert_popup
 ||ads.as4x.tmcs.net^
 ||ads.as4x.tmcs.ticketmaster.com^
 ||ads.asiafriendfinder.com^
-||ads.aspalliance.com^
 ||ads.avazu.net^
 ||ads.bb59.ru^
 ||ads.betfair.com^
@@ -13074,6 +13076,7 @@ www.4gamer.net##.live_alert_popup
 ||adsfac.net^
 ||adsfac.us^
 ||adsfeed.brabys.com^
+||adsflowprime.top^
 ||adshrink.it^
 ||adside.com^
 ||adsiduous.com^
@@ -13206,6 +13209,7 @@ www.4gamer.net##.live_alert_popup
 ||ahalogy.com^
 ||aheadday.com^
 ||aim4media.com^
+||airplanecoffee.com^
 ||airpush.com^
 ||aistat.net^
 ||ak0gsh40.com^
@@ -13641,6 +13645,7 @@ www.4gamer.net##.live_alert_popup
 ||clickhereforcellphones.com^
 ||clickngo.pro^
 ||clickonometrics.pl^
+||clicks.checkatrade.com^
 ||clicks.deliveroo.co.uk^
 ||clicks.equantum.com^
 ||clicks.eventbrite.com^
@@ -13865,6 +13870,7 @@ www.4gamer.net##.live_alert_popup
 ||easyhits4u.com^
 ||ebayadvertising.com^
 ||ebuzzing.com^
+||echoacloud.com^
 ||ecircle-ag.com^
 ||ecleneue.com^
 ||eclick.vn^
@@ -14044,7 +14050,6 @@ www.4gamer.net##.live_alert_popup
 ||furryfork.com^
 ||fusionads.net^
 ||fusionquest.com^
-||futuristicapparatus.com^
 ||futuristicfifth.com^
 ||futuristicframe.com^
 ||fuzzybasketball.com^
@@ -14113,6 +14118,7 @@ www.4gamer.net##.live_alert_popup
 ||greystripe.com^
 ||grouchybrothers.com^
 ||groundtruth.com^
+||growthrx.in^
 ||gscontxt.net^
 ||guardeddirection.com^
 ||guardedschool.com^
@@ -14135,7 +14141,6 @@ www.4gamer.net##.live_alert_popup
 ||hbb.afl.rakuten.co.jp^
 ||hbopenbid.pubmatic.com^
 ||heap.com^
-||heimi-lwx.com^
 ||hellobar.com^
 ||helpcollar.com^
 ||hentaicounter.com^
@@ -14224,7 +14229,6 @@ www.4gamer.net##.live_alert_popup
 ||images-pw.secureserver.net^
 ||img.prohardver.hu^
 ||imgpromo.easyrencontre.com^
-||immensehoney.com^
 ||imonomy.com^
 ||imp.i312864.net^
 ||impossibleexpansion.com^
@@ -14313,6 +14317,7 @@ www.4gamer.net##.live_alert_popup
 ||kickoffo.site^
 ||kindads.com^
 ||kissmetrics.com^
+||kittycatking.com^
 ||klclick.com^
 ||klclick1.com^
 ||kliks.nl^
@@ -14328,7 +14333,6 @@ www.4gamer.net##.live_alert_popup
 ||ktu.sv2.biz^
 ||kvsadman.com^
 ||l1.britannica.com^
-||lakequincy.com^
 ||lameletters.com^
 ||landkarts.com^
 ||larati.net^
@@ -14706,7 +14710,6 @@ www.4gamer.net##.live_alert_popup
 ||omtrdc.net^
 ||onaudience.com^
 ||onclickads.net^
-||oneandonlynetwork.com^
 ||onegg.site^
 ||onestat.com^
 ||onestatfree.com^
@@ -15329,6 +15332,7 @@ www.4gamer.net##.live_alert_popup
 ||summerobject.com^
 ||sumo.com^
 ||sumome.com^
+||sunsetcampfires.com^
 ||superawesome.tv^
 ||superchichair.com^
 ||superclix.de^
@@ -15617,7 +15621,6 @@ www.4gamer.net##.live_alert_popup
 ||url9467.comms-2.zoopla.co.uk^
 ||urlcash.net^
 ||us.a1.yimg.com^
-||userreplay.com^
 ||userreplay.net^
 ||users.maxcluster.net^
 ||utils.mediageneral.net^
@@ -15649,6 +15652,7 @@ www.4gamer.net##.live_alert_popup
 ||vidcpm.com^
 ||video-stats.video.google.com^
 ||videoadex.com^
+||videoadstech.org^
 ||videoegg.com^
 ||videostats.kakao.com^
 ||vidible.tv^
@@ -18293,9 +18297,6 @@ bilibili.com,dandanzan.top,v.qq.com##+js(nowebrtc)
 !bilibili.com##+js(no-fetch-if, data.bilibili.com)
 !bilibili.com##+js(trusted-suppress-native-method, navigator.sendBeacon, '"data.bilibili.com/log/"', prevent)
 
-! https://github.com/uBlockOrigin/uAssets/pull/11475
-||monerominer.rocks/miner-mmr/webmnr.min.js
-
 ! https://github.com/uBlockOrigin/uAssets/issues/12648
 ||sudonull.com/stop-ru.js
 
@@ -18381,6 +18382,9 @@ lared.cl##+js(no-xhr-if, s73cloud.com/metrics/)
 
 ! https://strumyk.net/match/83864-widzew-lodz-vs-arka-gdynia
 zorroplay.xyz##+js(rmnt, script, sendFakeRequest)
+
+! https://tunein.com/radio/Epic-Lounge---Lounge-Covers-s310370/
+tunein.com##+js(no-fetch-if, /api/v1/log)
 
 !END
 
