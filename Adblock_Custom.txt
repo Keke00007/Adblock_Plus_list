@@ -1,0 +1,755 @@
+[Adblock Plus 2.0]
+! Title: ねぎフィルタ（広告以外の不要要素ブロック）
+! Last modified: 2024/5/18 00:00 JST
+! Expires: 6 hours (update frequency)
+! License: CC0 (Public Domain)
+! Homepage: https://eeii0a5l.github.io/mochifilter_homepage/negi.html
+!Youtubeに最初にアクセスしたときに上部に出る「Chromeでアクセスしますか？」のチッカー
+www.youtube.com###ticker-content
+!動画右上のSuggests白いバー
+!→Informationの白丸まで消えてしまうので、いったんコメント化。2019.8.18
+!www.youtube.com##.ytp-chrome-top-buttons
+!Youtube動画再生して最後に出てくるチャンネル動画サムネイルを消す場合
+!www.youtube.com##.ytp-ce-element.ytp-ce-video
+!画面右下のチャンネルサムネ
+youtube.com##.branding-img-container
+!YouTubeの生配信見てるとクソ重くなるのがどうにかならないのかね
+!https://egg.5ch.net/test/read.cgi/software/1562160518/739-740
+youtube.com##yt-live-chat-ticker-renderer
+!「〇〇の視聴者はこのチャンネルも見ています」っていうのがデカデカとサムネの半分くらい占めて表示されるようになった
+!https://egg.5ch.net/test/read.cgi/software/1562160518/757
+!https://egg.5ch.net/test/read.cgi/software/1562160518/768
+youtube.com##ytd-thumbnail-overlay-endorsement-renderer
+!サムネ下部に出る白帯の"also watched"のやつ 2020.10.16 ～
+www.youtube.com###hover-overlays
+!Youtube Music
+!トライアル
+music.youtube.com##ytmusic-popup-container:has( > paper-dialog > ytmusic-mealbar-promo-renderer )
+!ニコ生＋ニコ動（く）2018.6.28
+||enquete.nicovideo.jp^$domain=~enquete.nicovideo.jp
+||urc.live.nicovideo.jp^
+/marqueeplayer.$domain=live.nicovideo.jp|www.nicovideo.jp|nicovideo.cdn.nimg.jp
+||live.nicovideo.jp/img/nicolive/bnr_premium_hq/
+!動画上部のニュースティッカー
+!https://jbbs.shitaraba.net/bbs/read.cgi/internet/24461/1510462016/524
+www.nicovideo.jp##.Marquee-item
+www.nicovideo.jp##.MainContainer-marquee
+!動画の検索結果に混ざって表示されるニコニ広告を非表示にする
+www.nicovideo.jp##.nicoadVideoItem.item
+||flapi.nicovideo.jp/api/getmarquee_new
+||nicovideo.jp/marquee/
+!時報
+||nicovideo.cdn.nimg.jp/html5jiho/
+!ニコニコ動画最後のこの動画はご覧のユーザーの皆様が応援しています
+!https://egg.5ch.net/test/read.cgi/software/1524667609/106
+||api.nicoad.nicovideo.jp/v1/contents/video/*/thanks
+||nicovideo.cdn.nimg.jp/web/scripts/pages/watch/assets/uad.mp3
+!https://egg.5ch.net/test/read.cgi/software/1645487573/121
+||secure-dcdn.cdn.nimg.jp/nicoad/res/supporters/credit/voice.mp3
+!ニコ生ザッピング欄
+live2.nicovideo.jp##div[class^="___player-foot-area"]
+!マイページのバナー
+||nicovideo.cdn.nimg.jp/uni/img/zero_my/bnr_2018xmas_before.png
+||nicovideo.cdn.nimg.jp/uni/img/zero_my/bnr_
+!マイページ右上のバナー
+||nicovideo.cdn.nimg.jp/uni/img/zero_my/bnr_premium2018.png
+!ニコ動検索結果内に挿入されるニコニ広告
+www.nicovideo.jp##li.nicoadVideoItem
+!運営コメント?
+live2.nicovideo.jp##div[class^="___player-display-header"]
+!ニコ動ランキング
+!https://egg.5ch.net/test/read.cgi/software/1554721271/859
+www.nicovideo.jp##div.MediaObject.RankingMainVideo:has-text(き)
+www.nicovideo.jp##div.Card.RankingBaseItem:has-text(き)
+www.nicovideo.jp##a.Card-link:has-text(き)
+!上部のプレミア一年分
+nicovideo.jp##.premiumHeader-inner
+nicovideo.jp##.PremiumHeader
+nicovideo.jp##div[class^="___Nico-premiumBanner___"]
+nicovideo.jp###premiumHeader
+nicovideo.jp###Nico-premiumBanner
+nicovideo.jp##.premiumHeader-inner
+!ニコニコニュースを開いたときに若干まごつくのを回避する
+news.nicovideo.jp##^script:has-text(dataLayer)
+!ニコニコ大百科を開いたときに若干まごつくのを回避する
+!いきなり動画紹介（ニコ動トップ）
+www.nicovideo.jp##.VideoIntroductionAreaContainer
+||dcdn.cdn.nimg.jp/nicoad/instream/video/$domain=www.nicovideo.jp
+!ニコ動ランキングのニコアド
+nicovideo.jp##.RankingMatrixNicoadsRow
+!Google
+!ポップアップ「こちらによくアクセスする方は Google をホームページに」
+!googlemapで誤爆する
+!www.google.co.jp##div[role="dialog"]
+!uBlockOrigin専用表記なのでできるだけ使いたくない
+!www.google.co.jp##:xpath(//a[@title="No thanks"]/parent::div/parent::div)
+!なんかABPできかなかった。。。よくわからない。。。
+www.google.co.jp,www.google.com##div[role="dialog"][style="behavior:url(#default#userData)"]
+google.co.jp,google.com##div[aria-label="promo"]
+!!Googleトップの目障りなJS削除
+!→google_hplogo_block.txtに移動 2018.3.8
+!/logos/$domain=google.co.jp|google.com
+!Googleトップのロゴ画像削除
+!→ロゴは出た方がいいのでブロックはやめた
+!google.co.jp,google.com###hplogo
+!google.co.jp,google.com##^#hplogo
+!doodle共有ボタン
+!www.google.co.jp,www.google.com##button[data-async-trigger="ddlshare"]
+!下記をブロックするとChrome新規タブの表示がくずれる
+!www.google.co.jp,google.com###lga
+!下記は出ていい 2018.3.8
+!www.google.co.jp,google.com###prm-pt
+!Googleを規定の検索エンジンにしよう
+www.google.co.jp,www.google.com##.pdp-psy
+!"Looking for results in English? 引き続き日本語を使用"
+www.google.co.jp,www.google.com###sbfrm_l + div
+!「他の人はこちらも検索」を消す
+www.google.co.jp,www.google.com##div[jsl][data-ved]:has(h4:has-text(People also search for))
+www.google.co.jp,www.google.com##div[jsl][data-ved]:has(h4:has-text(他の人はこちらも検索))
+www.google.com,www.google.co.jp##.exp-outline
+!googleの右上に出てくる「プライバシー診断を受けて、設定をチェックしよう」
+www.google.com,www.google.co.jp##div[role="dialog"][style="behavior:url(#default#userData)"]
+!Google Translate
+!https://hakuhin.jp/js/event.html
+!##^meta[name="google-translate-customization"]
+!||translate.google.com/translate_a/element.js?cb=googleTranslateElementInit
+!facebook
+!Facebookのアクセス時に下段、スクロールした時に中央に出るコンテンツをFacebookでチェックログイン または 新しいアカウントを作成をブロックするフィルタ
+!https://egg.5ch.net/test/read.cgi/software/1556498678/363
+facebook.com###pagelet_growth_expanding_cta
+!weblio
+weblio.jp###footFixBar
+weblio.jp##.indexSideAdTop
+!weblio.jp##div[id*='div-gpt-ad']
+weblio.jp##.premiumEntry
+ejje.weblio.jp##iframe
+weblio.jp##.prmmSrvc
+ejje.weblio.jp###outerSideLeft
+ejje.weblio.jp##.prmmSrvc + .mainBlock
+ejje.weblio.jp###turbo-hot-word-wrap
+!Abema
+abema.tv##div[class^="styles__twitter-panel"]
+!Abema画面左下に出てくるおすすめ
+abema.tv##:xpath(//img[@alt="オススメ"]/parent::div/parent::div/parent::div/parent::div/parent::div)
+!お使いのブラウザは推奨環境外のため、正しく動画が再生されない可能性があります。快適に視聴するために、最新版のGoogle Chromeをご利用ください。
+!abema.tv##.pw_e
+abema.tv##:xpath(//p[contains(text(), "お使いのブラウザは推奨環境")]/parent::div/parent::div)
+abema.tv##.com-m-NotificationManager:has-text(お使いのブラウザは推奨環境外のため)
+!:hasで書き直した
+!→:hasの方が重いような気がするのでやめた。
+!abema.tv##div:has(> div > p:has-text(お使いのブラウザは推奨環境))
+!abema.tv##div#main > div > div + header + div:has(> div > p:has-text(お使いのブラウザは推奨環境))
+!abema.tv##:xpath(//span[contains(text(), "最大4ヶ月プレミアムプランが実質無料")]/parent::p/parent::a/parent::h1)
+!abema.tv##h1:has(> a > p > span:has-text(最大4ヶ月プレミアムプランが実質無料))
+!abema.tv##div#main div > main > div > section > h1:has(> a > p > span:has-text(最大4ヶ月プレミアムプランが実質無料))
+abema.tv##:xpath(//span[contains(text(), "詳細をみる")]/parent::p/parent::a)
+abema.tv##:xpath(//span[contains(text(), "詳細を見る")]/parent::p/parent::a)
+!Abema次のビデオ
+!abema.tv##div[class]:has(> div > a[href$="?next=true"])
+!Abemaのトップバナー
+!abema.tv##.c-tv-TVTopContainer-jumbotron-banner
+!次の動画の自動遷移をオフる
+!→オフが効かないのでコメント化。2020.6.24
+!https://jbbs.shitaraba.net/bbs/read.cgi/internet/24461/1510462016/228
+!abema.tv##div[class^="com-vod-VODNextProgramInfo"]
+!abema.tv##.com-vod-VODNextProgramInfo
+!abema.tv##.com-vod-VODNextProgramInfo--is-show
+!abema.tv##+js(no-setInterval-if.js, NEXT_EPISODE_COUNTDOWN_TIME)
+!abematimes
+!左下のオンエアボックス
+times.abema.tv##.on-air
+!Yahoo!Japan
+yahoo.co.jp###promoarea
+www.yahoo.co.jp##.commerceBanner
+www.yahoo.co.jp###cb
+www.yahoo.co.jp###js-ninjyo
+www.yahoo.co.jp###selectionR
+www.yahoo.co.jp###rightbox
+www.yahoo.co.jp###yjidbox
+www.yahoo.co.jp###eventPromo
+www.yahoo.co.jp###event
+www.yahoo.co.jp###ultra
+!Yahooトップ右欄青いクーポンの吹き出しバルーン
+www.yahoo.co.jp###Balloon
+!初回右上「Yahoo!Japanをホームページにしよう」
+www.yahoo.co.jp###PopHead
+www.yahoo.co.jp###Perorin
+!Yahooトップに戻るリンクが最上部に出るようになったので表示させる
+news.yahoo.co.jp###msthdtp
+!Yahooニュースで文字列を選択した時に出る「Yahoo検索」ポップアップを邪魔なので消す
+yahoo.co.jp###yjSearchPop
+!weather.yahoo.co.jp###msthdFifth
+!uBOで、Yahooニュースの記事の中の勝手な検索リンクを抹殺したい
+!https://egg.5ch.net/test/read.cgi/software/1562160518/464-466
+||slink-search.yahooapis.jp/v1/link/highlight_words$domain=news.yahoo.co.jp
+!今日の感染者数
+www.yahoo.co.jp###Covid19Banner
+!スポナビのページ右上方にあるピックアップ動画を消すことできないでしょうか
+ttps://egg.5ch.net/test/read.cgi/software/1584753386/246
+sports.yahoo.co.jp##.yvpub-player.yjads_priority_3
+!今日からヤフートップのヘッドラインにコメント数が表示されるようになったんだが
+!https://egg.5ch.net/test/read.cgi/software/1562160518/940
+!www.yahoo.co.jp##a[href^="https://news.yahoo.co.jp/pickup/"]> div > div > span:has(span[style*="10px;"])
+!宝くじ
+!www.yahoo.co.jp###Takarabako
+!Yahooショッピング
+shopping.yahoo.co.jp##.uiStickyCrm
+shopping.yahoo.co.jp##.mdNorthBuyee
+shopping.yahoo.co.jp##.mdPenetrateBanner
+shopping.yahoo.co.jp##.mdItemInfoCartCount
+shopping.yahoo.co.jp###glonavi
+shopping.yahoo.co.jp##div[style="position:fixed; top:100px; right:0;"]
+shopping.yahoo.co.jp##.mdFloatingButton
+shopping.yahoo.co.jp###msthd > .elAccount > li > span.elRegistration
+!Yahooショッピング右下のお知らせを含むcrmのブロック
+!||s.yimg.jp/images/commerce/js/service/shp/crm/crm1.6.js
+!Yahooショッピング
+!右下にぴょこっとでてくるボックス
+!1.6→1.7になった
+!||s.yimg.jp/images/commerce/js/service/shp/crm/crm1.7.js
+!||s.yimg.jp/images/commerce/js/service/shp/crm/crm$script
+!js/フォルダ以下だから$scriptの判定は不要だと思われるので下記で様子をみる
+||s.yimg.jp/images/commerce/js/service/shp/crm/crm
+!今売れました
+shopping.yahoo.co.jp###buynow
+!Yahooスポーツ
+!Yahooスポーツで自動再生の動画を切って通信料を抑える
+https://egg.5ch.net/test/read.cgi/software/1540428057/788
+https://egg.5ch.net/test/read.cgi/software/1540428057/805
+||s.yimg.jp/images/yvpub/player/$domain=sports.yahoo.co.jp
+!カート削除
+shopping.yahoo.co.jp##.mdCartAnchorLink
+auctions.yahoo.co.jp###js-PromotionFrame
+auctions.yahoo.co.jp###js-BannerFrame
+travel.yahoo.co.jp###rapid-h-bnr
+travel.yahoo.co.jp##.featureStickBanner
+travel.yahoo.co.jp###sidebnr
+videotopics.yahoo.co.jp###s_combnr1
+!右下のカートに入れるがうざすぎる
+store.shopping.yahoo.co.jp###floatbtn
+store.shopping.yahoo.co.jp##.fixog
+!右欄のYahoo!ニュースからのお知らせ
+headlines.yahoo.co.jp##.subAnnounce
+!右欄のYahoo!ニュース タイアップ
+headlines.yahoo.co.jp##.rma_responsive_small
+!YahooJAPANの映像トピックスのビデオを再生後に自動的に５秒後に次の動画に勝手に移行されてしまうのを抑制する。
+!uBlock Origin 1.14.25rc1以降の「##^」拡張機能が必要。
+!ない場合は、ユーザースクリプトで要素を削除すればよい。
+!Yahooスポーツナビhttps://sports.yahoo.co.jp/の右上で勝手に再生されるピックアップ動画を止める
+!https://egg.5ch.net/test/read.cgi/software/1524667609/84-85
+||s.yimg.jp/images/yvpub/player/fla/v1/YVPubPlayer.swf$domain=sports.yahoo.co.jp
+sports.yahoo.co.jp###pkmvemb
+!ヤフオクでページを開くたびに全面表示される毎日くじ
+page.auctions.yahoo.co.jp###js-prMdl
+!ヤフオクを開いた時に定期的にお知らせが表示されるので
+!https://egg.5ch.net/test/read.cgi/software/1562160518/923
+!auctions.yahoo.co.jp###topPageArea > section[class^=Component-sc-]:has(> a[data-ylk^="rsec:prmdl"])
+!weather
+weather.yahoo.co.jp###appbnr
+weather.yahoo.co.jp###ydn-bot
+!Yahoo天気
+!ビーコン
+!||ybx.yahoo.co.jp/clear.gif
+!Yahoo知恵袋
+!ビーコンっぽい
+||ybx.yahoo.co.jp/p?
+||yahoo.co.jp/s?
+!financeのグラフが消えてしまう
+!.yahoo.co.jp##.marB10
+||s.yimg.jp/images/finance/bnr/
+||s.yimg.jp/images/finance/mt/promotion/funds/bnr/
+||yads.c.yimg.jp/js/yads.js
+||s.yimg.jp/images/finance/kawasetop/yjfx/
+finance.yahoo.co.jp##.padB6
+finance.yahoo.co.jp###pos-lrec
+detail.chiebukuro.yahoo.co.jp##.fwaBoxWrap
+lohaco.jp##.headerLoopBanner
+lohaco.jp##.bannerArea
+!Yahooニュースで記事の文字列を選択した時に出てくる「Yahooで検索する」ポップアップを消す
+||ai.yimg.jp/images/search/slink/popup/pc/1.0.0/js/popsearch.min.js
+!Gyao
+gyao.yahoo.co.jp###premium_bnr
+gyao.yahoo.co.jp###nav
+!microsoft
+!Edge Promotion Block。マイクロソフトのサイト上部に出てくる「Try Edge」の文言
+microsoft.com###epb
+account.live.com###epb
+live.com###epb
+!https://support.microsoft.com/en-us/helpにでてくる最下部のwas this information helpful? Yes/No
+support.microsoft.com##.survey-background
+! MSN上部のバナー
+||www.msn.com/ja-jp/homepage/irisbannerajax?
+||www.msn.com/ja-jp/news/irisbannerajax?
+!twitter
+!ツイートポップアップ時にこれがあると右クリックで画像表示できないので消す
+!https://jbbs.shitaraba.net/bbs/read.cgi/internet/24461/1510462016/46
+!twitter.com##.GalleryNav
+!ツイッターのユーザページの詳細設定をクリックする時にツールチップが邪魔なので消す
+twitter.com,x.com##.tooltip-inner
+!Twitter ライブビデオ
+||twitter.com/i/live_video_stream/
+||x.com/i/live_video_stream/
+!||p-va-1.ft.e.lv.twimg.com/x/out/
+twitter.com,x.com##.LiveVideoHomePageModuleContainer
+!リツイート非表示
+!https://egg.5ch.net/test/read.cgi/software/1540428057/702-703
+!twitter.com##.tweet-has-context.js-original-tweet.original-tweet.dismissible-content.js-profile-popup-actionable.js-actionable-tweet.js-stream-tweet.tweet
+!固定されたツイート
+!https://egg.5ch.net/test/read.cgi/software/1562160518/366-372
+!twitter.com##article:has( > div > div > div > div > div > div > div > div:has-text(Pinned Tweet) ):upward(1)
+!twitter.com##article:has( > div > div > div > div > div > div > div > div:has-text(固定されたツイート) ):upward(1)
+!ツイッターの「固定されたツイート」を非表示にするフィルタを教えてもらいたいです
+!https://egg.5ch.net/test/read.cgi/software/1562160518/945
+!twitter.com##div[data-testid=socialContext]:has-text(固定されたツイート):upward(article)
+!固定されたツイート, リツイート
+!https://egg.5ch.net/test/read.cgi/software/1562160518/729
+!twitter.com##span:has-text(固定されたツイート):upward(10)
+!twitter.com##span:has-text(さんがリツイート):upward(11)
+!
+!>>728
+twitter.com##span:has-text(プロモツイート):upward(3)
+!TL上の～さんがリツイート
+!https://egg.5ch.net/test/read.cgi/software/1562160518/366-372
+twitter.com##article:has( > div > div > div > div > div > div > div > div > a >span:has-text(Retweet) ):upward(1)
+twitter.com##article:has( > div > div > div > div > div > div > div > div > a >span:has-text(さんがリツイート) ):upward(1)
+twitter.com##span:has-text(Retweet):upward(11)
+twitter.com##span:has-text(さんがリツイート):upward(11)
+!ツイッター右上トレンドのニュース記事削除
+witter.com##div[aria-label="Timeline: Trending now"] > div > div:has( > div > div > div > div > div > div > div > div > div > svg[aria-label="Verified account"] )
+twitter.com##div[aria-label="タイムライン: トレンド"] > div > div:has( > div > div > div > div > div > div > div > div > div > svg[aria-label="認証済みアカウント"] )
+!ツイッターのおすすめトピックを消す
+twitter.com##span:has-text(/^おすすめトピック$/):upward(div[style^="position: absolute; width: 100%;"])
+twitter.com##a[aria-labelledby^="topic"]:upward(div[style^="position: absolute; width: 100%;"])
+twitter.com##span:has-text(/^その他のトピック$/):upward(div[style^="position: absolute; width: 100%;"])
+!ツイッターのおすすめユーザーを消す
+twitter.com##span:has-text(/^おすすめユーザー$/):upward(div[style^="position: absolute; width: 100%;"])
+twitter.com##div[aria-label^="タイムライン:"]:not([aria-label$="タイムラインを検索"] ) > div > div > div > div[data-testid="UserCell"]
+twitter.com##span:has-text(/^さらに表示$/):upward(div[style^="position: absolute; width: 100%;"])
+!「「いま」起きていることを見つけよう」を消す
+!https://jbbs.shitaraba.net/bbs/read.cgi/internet/24461/1510462016/422
+twitter.com###layers > div:has( div[dir="auto"]:has-text(「いま」起きていることを見つけよう))
+!Twitterを閲覧してる時に特定のアカウントを非表示するフィルターの書き方を教えてください
+!https://egg.5ch.net/test/read.cgi/software/1659969958/323
+!twitter.com##div:matches-attr(data-testid="cellInnerDiv"):has(div:matches-attr(data-testid="User-Names"):has(span:has-text(/@userid1|@userid2/)))
+!Wikipedia
+wikipedia.org###siteNotice
+wiktionary.org###siteNotice
+wikibooks.org###siteNotice
+!wikimedia.commons
+commons.wikimedia.org###siteNotice
+||meta.wikimedia.org/w/index.php?title=Special:BannerLoader&campaign=
+!投稿記録の新規執筆がワンテンポ遅れて表示されるのでうざい
+!ja.wikipedia.org##:xpath(//span[contains(@class, 'cx-contributions')]/parent::span)
+!pinterest
+!保存ボタンの周りの青い輪のアニメーションがうざい
+www.pinterest.jp##div[role="button"][tabindex="0"] > div[style] > div:style(border: 0)
+www.pinterest.jp##div[role="button"][tabindex="0"]
+www.pinterest.jp##div[role="button"][tabindex="0"] > div[style]
+!右上のGoogleログインボックス
+www.pinterest.jp##iframe[src^="https://smartlock.google.com/iframe/request?client=https%3A%2F%2Fwww.pinterest.jp"]
+!中央のモーダルログインボックス
+!www.pinterest.jp##div[data-test-id="fullPageSignupModal"]
+!音泉
+www.onsen.ag###fixFooter
+!右のナビ。
+www.onsen.ag###programNavi
+!右上の動画gifバナー
+||www.onsen.ag/common/image/cms/image/3940_img01.gif
+||www.onsen.ag/common/image/cms/image/4963_img01.gif
+!おすすめ商品
+www.onsen.ag##.recommendProduct
+!おすすめ番組
+www.onsen.ag##.recommendProgram
+!５ちゃんねる
+5ch.net,bbspink.com##div[align='center'] + table + br + table + div
+5ch.net,bbspink.com##div[align='center'] + table + br + table
+5ch.net,bbspink.com##table + br + center
+!↓お絵かき表示をOFFにする場合
+!||o.8ch.net^
+!すすコインの宣伝
+5ch.net##div > p:has(> a[href="https://susukino.com/"])
+!【おしらせ】私たちはitest用の新しいサムネイルシステムを実装するためのテストを開始します。2018/11/06
+5ch.net##div[style="margin: 0; padding: 2.25em 0 0.25em 0; text-align: center;"] > p:has-text(私たちはitest用の新しいサムネイルシステムを実装するためのテストを開始します)
+!クックパッド
+cookpad.com###search_menu_filter > .section > h2.title
+cookpad.com###popularity_search_link
+cookpad.com###recommend_premium_space
+cookpad.com###related_honor_recipe
+cookpad.com###kondate_box
+cookpad.com##.left_container
+cookpad.com##.free_login_user
+cookpad.com###sticky_reference_element
+cookpad.com###bottom_recommended_contents > .box > .recommended_contents:nth-child(3)
+cookpad.com##.recommended_pro_recipe
+!Game Spark
+www.gamespark.jp##.page-top
+!日刊スポーツ
+www.nikkansports.com##.special_newsflash
+!huffingtonpost.jp
+!メールマガジン登録枠が毎回でてめざわり
+www.huffingtonpost.jp##.newsletter-toaster
+!MailOnline
+www.dailymail.co.uk##.floating-buttons
+!Instagram
+instagram.com##footer + div
+!https://egg.5ch.net/test/read.cgi/software/1556498678/678
+! 11/21/2019 https://www.instagram.com
+! 画面下のログインバナー
+www.instagram.com##nav .glyphsSpriteGrey_Close:upward(2):has(div:has-text(/^\s*(?:Log In to Instagram|Instagramにログイン)\s*$/))
+www.instagram.com##div:has-text(/^\s*(?:Log In to Instagram|Instagramにログイン)\s*$/):upward( nav .glyphsSpriteGrey_Close ):upward(2)
+! 下にスクロールしていくと出てくるログインダイアログボックス
+www.instagram.com##[role="presentation"]:has(div:has-text(/^\s*(?:Log in to continue|ログインする)\s*$/))
+www.instagram.com##div:has-text(/^\s*(?:Log in to continue|ログインする)\s*$/):upward([role="presentation"])
+! スクロールバーがおかしくなる 2022.8.22
+www.instagram.com##body:style(overflow: auto !important)
+!おすすめユーザ
+www.instagram.com##div:has( > div > span:has-text(Suggestions For You))
+www.instagram.com##div:has( > span > div:has-text(/(Suggestions for you|おすすめ)/))
+www.instagram.com##div:has( > span > div:has-text(/(Suggestions for you|おすすめ)/)) + div
+!cnn.jp
+www.cnn.co.jp###right-column > div:last-child
+www.cnn.co.jp##.video-slider-list
+!ファミ通
+www.famitsu.com###pageTopBack
+www.famitsu.com##.jsPageTop
+!価格.com
+kakaku.com###historyContainer
+!楽天
+rakuten.co.jp###rakutenLimitedId_cartParts
+!固定バナー
+item.rakuten.co.jp###tate_left
+item.rakuten.co.jp###tate_right
+item.rakuten.co.jp###tate_right2
+!右下に出てくる買い物カゴ。なくても問題ない。
+!ショップによってレイアウトが違うので止めた。
+!→買い物かごはショップ共通なのでやっぱりブロック
+!楽天を見るということはショッピング目的なのでブロックしないほうがいい。2018.2.6
+!item.rakuten.co.jp###floatingCartContainer
+!item.rakuten.co.jp###floatButton1
+!楽天右側の固定枠
+!ショップによってレイアウトが違うので止めた。
+!rakuten.co.jp###riSDTopBtnWrap
+!rakuten.co.jp##.tab_item
+!rakuten.co.jp###douji01
+!rakuten.co.jp##.sale_item
+!産経
+!ビーコン
+||m.ranking.sankei-digital.co.jp/sankei/ranking/js/beacon_m.jpg?
+||b.ranking.apis.sankei-digital.co.jp/sankei/ranking/img/beacon.gif?
+||b.ranking.sankei-digital.co.jp/sankei/ranking/js/beacon.jpg?
+!下部のSNS固定バー枠
+www.sankei.com###footerFloatingMenu
+!読売
+!トラッキング
+||rtoaster.com^
+||rtoaster.jp^
+!Slashdot
+!タグ
+||tag.1rx.io^
+!朝日
+!ビーコン、トラッキング：１０秒ごとにビーコンが発信されてうざい
+!||pixel.parsely.com^
+||static.parsely.com^
+!まんたんウェブ
+mantan-web.jp##.back-to-top
+!まいじつ
+!記事の右の小枠動画
+myjitsu.jp###ivs-player-001
+!わにブックス
+www.wani.co.jp###topagetopLeft
+www.wani.co.jp###topagetopRight
+!moca
+moca-news.net###close-button
+!impress
+watch.impress.co.jp###pc-floating-layer
+!amebloの右下のナビ
+ameblo.jp##.footerNav
+!fc2
+blog.fc2.com###topcontrol
+!TVer
+tver.jp###ptop
+!IndieGala
+!カート削除
+www.indiegala.com##nav.cart-button-fixed
+!wikiaのページ下部のバー
+!→fandom.comへ移行した
+fandom.com###WikiaBar
+fandom.com###WikiaNotifications
+!redditのトップのニュースレター購読バナー
+reddit.com##.newsletterbar
+!reddit
+!類似のコミュニティ
+www.reddit.com##div[data-redditstyle="true"]:has( > div[style] > div > div > div:has-text(/^Similar communities to/))
+!tunein
+!ラジオ再生直後に出るアプリの宣伝
+tunein.com##div[component="UserConversionModal"]
+tunein.com###fader
+!itmedia上部のチッカー
+itmedia.co.jp##.colBoxBreakingNews
+!サインインのポップアップ
+!ポップアップで強調されたほうが良い、未ログインでもカートにアイテム追加→レジまで進めてしまうので
+!amazon.co.jp##.nav-signin-tt
+!Amazonサインイン吹き出し。必要な人だけONにする
+www.amazon.co.jp###nav-flyout-anchor
+!ドスパラ
+www.dospara.co.jp###chatIcon
+!goo
+oshiete.goo.ne.jp###are_search_footer_popup
+!教えてgooで文字列選択でポップアップするQ&A検索
+oshiete.goo.ne.jp###searchBtn_popup
+!slashdot
+slashdot.org###announcement
+!日経
+www.nikkei.com##.JSID_yudoMotion_closeAction
+!日経新聞
+!トラッカー
+||metrics.brightcove.com^
+||atlas-endpoint.data.n8s.jp^
+||nikkei.d1.sc.omtrdc.net/b/
+||tr.webantenna.info^
+!web.archive.org
+archive.org###donate_banner
+archive.org###donato
+||archive.org/includes/donate.php
+!pixiv
+www.pixiv.net##._premium-lead-tag-search-bar
+!pixivから指定ユーザを消す
+!https://egg.5ch.net/test/read.cgi/software/1562160518/205-207
+!www.pixiv.net##li:has( a:has-text(※ユーザーの名前※) )
+!OKwave
+!真っ赤でまぶしい
+|cdn.gazo.okwave.jp/okwave/top/images/banner/bemore_610_293.gif
+||cdn.gazo.okwave.jp/okwave/top/images/banner/bnr180712_610_300_2.png
+||cdn.gazo.okwave.jp/okwave/top/images/banner/
+!zdnet
+!左下にぴょっと出てくるボックス
+www.zdnet.com##.preloaded_lightbox
+!Windy
+www.windy.com###donate-promo-goals
+www.windy.com###articles
+!東京アメッシュ
+!下部スライドバナーがうざすぎる
+||tokyo-ame.jwa.or.jp/scripts/slick.min.js
+!teratail
+!imgur
+imgur.com##.EmeraldButton
+imgur.com##.emerald-button
+!4Gamer
+!右下のRecommendsポップアップ
+www.4gamer.net##.live_alert_popup
+!END
+[Adblock Plus 2.0]
+! Title: FIXフィルタ（各種フィルタの対策）
+! Last modified: Oct 09, 2020 00:00 JST
+! Expires: 6 hours (update frequency)
+! License: CC0 (Public Domain)
+! Homepage: https://eeii0a5l.github.io/mochifilter_homepage/fix.html
+! 
+! 
+!START ------------------------------------------------------------
+! JPN: ABP Japanese filters (日本用フィルタ) の不具合対策
+!ヤフオクトップのクジが表示されないので例外にする
+@@||s.yimg.jp/images/auct/cms/promo/$domain=auctions.yahoo.co.jp
+!googleシートで同期エラーダイアログが出るので例外にする
+@@||docs.google.com/spreadsheets/d/*/logImpressions?$domain=docs.google.com
+!Yahooトップに戻るとき
+!@@||rdsig.yahoo.co.jp/mh/click/ytop/RV=1/$document,domain=yahoo.co.jp
+@@||rdsig.yahoo.co.jp/mh/click/$document,domain=yahoo.co.jp
+!Google Sheetでなにか編集するたびにエラーダイアログが表示されてしまう対策
+!@@||docs.google.com/static/spreadsheets2/client/js/3533117528-ritz_waffle_i18n_analytics.js|$domain=docs.google.com
+@@||docs.google.com/static/spreadsheets2/client/js/$domain=docs.google.com
+!Peter Lowe’s Ad and tracking server list
+!!Yahoo映像トピックスのTVer動画が見れない問題の対策
+!Youtubeで動画が見れなくなるので一旦コメント化。2017.10.31
+!2mdn.netを例外にするとyoutubeで広告が流れる
+!したがって、gyao(yahoo)だけで例外にする。
+@@||s0.2mdn.net/instream/video/client.js$domain=gyao.yahoo.co.jp
+!twitchでカウントが増え続ける問題の解法
+@@||sb.scorecardresearch.com/p?$image,domain=twitch.tv
+@@||api.mixpanel.com/track?data=$xmlhttprequest,domain=twitch.tv
+@@||countess.twitch.tv/ping.gif?u=$xmlhttprequest,domain=twitch.tv
+@@||spade.twitch.tv^$xmlhttprequest,domain=twitch.tv
+!http://hktdouga.blog.jp/でPowered by livedoor 相互RSSの枠内が全部消えてしまう
+@@||blogroll.livedoor.net^
+!Gyaoが見れない
+!@@||imasdk.googleapis.com/js/sdkloader/ima3.js$domain=gyao.yahoo.co.jp
+@@||players.brightcove.net^$domain=gyao.yahoo.co.jp
+@@||metrics.brightcove.com/v2/tracker?domain=$domain=gyao.yahoo.co.jp
+@@||gyao.yahooapis.jp/rio/checkVisible?appid=$third-party,domain=gyao.yahoo.co.jp
+!http://iroyaku.livedoor.biz/archives/73473612.html#commentsでコメントが見れない
+livedoor.biz#@#[class$="-ads"]:not(html):not(body)
+!http://www6.nhk.or.jp/nhkpr/post/trailer.html?i=12747が見れない
+!https://egg.5ch.net/test/read.cgi/software/1510382303/684
+@@||ovp.piksel.com/ipLookup.php$xmlhttprequest,domain=movie-s.nhk.or.jp
+!冬季オリンピックの動画が見れない
+! Japanese filtersが誤爆するため
+!https://egg.5ch.net/test/read.cgi/software/1515404854/563,565
+@@||players.brightcove.net/*/*_default/index.min.js$script
+@@||edge.api.brightcove.com/playback/v1/accounts/$xmlhttprequest
+@@||secure.brightcove.com/services/mobile/streaming/index/$xmlhttprequest
+!@@||imasdk.googleapis.com/js/sdkloader/ima3.js
+!スクエニのサイトでニュースが表示されない
+!https://egg.5ch.net/test/read.cgi/software/1518498170/338
+@@||www.googleadservices.com/pagead/conversion_async.js$domain=www.jp.square-enix.com
+!読売オンラインでフォントが出ない
+!http://www.yomiuri.co.jp/stream/?id=08212
+@@||ssl.p.jwpcdn.com/player/v/7.12.8/jw-icons.woff$domain=www.yomiuri.co.jp
+!j-castトップで最新ニュースが消える
+@@||scdn.cxense.com/cx.js$domain=j-cast.com
+@@||api.cxense.com/public/widget/data?$domain=j-cast.com
+@@||comcluster.cxense.com/dmp/push?callback$domain=j-cast.com
+@@||api.cxense.com/public/widget/click/$domain=j-cast.com
+!下記で動画が見れない
+!https://sports.nhk.or.jp/video/element/video=36971.html
+@@||sports.nhk.or.jp/components/script/customer/diva-analytics.js$domain=nhk.or.jp
+!日テレNEWSが見れない
+!http://www.news24.jp/articles/2018/03/11/04387734.html
+@@||players.brightcove.net$domain=www.news24.jp
+@@||edge.api.brightcove.com/playback/$domain=www.news24.jp
+!MSN記事ページが見れない
+!https://egg.5ch.net/test/read.cgi/software/1515576375/654
+!@@|https:*^ad-
+@@||static-entertainment-eas-s-msn-com.akamaized.net^
+!Youtubeliveで延々とブロック数が増える問題の解法
+!@@||youtube.com/api/stats/qoe?$domain=youtube.com
+!@@||www.youtube.com/live_204?$domain=youtube.com
+!@@||www.youtube.com/youtubei/v1/log_interaction?$domain=youtube.com
+!@@||www.youtube.com/youtubei/v1/log_event?$domain=youtube.com
+!W杯の動画が見れない
+!@@||imasdk.googleapis.com/js/sdkloader/ima3.js
+!楽天にログインできない
+!https://egg.5ch.net/test/read.cgi/software/1524667609/978
+!https://forums.lanik.us/viewtopic.php?f=64&t=42018
+@@||rd.rakuten.co.jp^$domain=rakuten.co.jp
+!AFPの下記の動画がみれない
+!http://www.afpbb.com/articles/-/3196720
+!https://egg.5ch.net/test/read.cgi/software/1539988921/131
+@@||players.brightcove.net^$domain=afpbb.com|brightcove.net
+@@||edge.api.brightcove.com^$domain=afpbb.com|brightcove.net
+!ニコ動ランキングで金枠銀枠がごっそり消える
+!https://egg.5ch.net/test/read.cgi/software/1540428057/218
+||nicoad.nicovideo.jp^
+!Googleショッピングで商品クリックで飛べない
+!https://egg.5ch.net/test/read.cgi/software/1540428057/406
+@@||www.googleadservices.com^$domain=www.googleadservices.com
+@@^adinfo^$domain=www.google.co.jp
+@@||afl.rakuten.co.jp^$domain=rakuten.co.jp
+@@||doubleclick.net^$domain=doubleclick.net
+!https://github.com/AdguardTeam/AdguardFilters/issues/45369
+!https://github.com/eEIi0A5L/adblock_filter/commit/df85e54c47a64352b1f4a98d408127d9f6cf234f
+@@_campaign=$document,domain=shopping.google.com
+!Twitterの日刊スポーツ公式アカの記事を開こうとするとブロックされる
+!https://egg.5ch.net/test/read.cgi/software/1540428057/626
+@@_campaign=$document,domain=nikkansports.com
+!uBlock Originで、4sharedに入ることすらできないんだけど何か問題でもある？
+!https://egg.5ch.net/test/read.cgi/software/1556498678/590
+!参考までに、MVPS hostsに該当ルールあり。uBOデフォでは未チェックのはず
+!https://jbbs.shitaraba.net/bbs/read.cgi/internet/24461/1510462016/178
+@@||www.4shared.com^
+!https://egg.5ch.net/test/read.cgi/software/1556498678/665
+!NHKで、
+!再生できない場合
+@@||analytics.edgekey.net/ma_library/$script,domain=nhk.or.jp
+!途中で止まる場合
+@@||analytics.edgekey.net/config/beacon-$xmlhttprequest,domain=nhk.or.jp
+! 豆腐、EasyList: 3Dセキュア対応サイトとクレジットの組合せで決済エラー
+@@||pay.veritrans.co.jp/pop/v1/javascripts/pop.js$script
+! Easylist スマホ版5chで検索ができない
+@@||itest.5ch.net/rect/special_ads.json|$xhr
+! END
+verajohn.com
+||verajohn.com
+tokyomotion.net##.junk-ad-body
+highporn.net###akr4sie9mzt
+amazon.co.jp###percolate-ui-ilm_div > div.celwidget
+avgle.com###wrapper > div:nth-child(9) > center
+###vplayer
+stunninglover.com
+tcb.pushic.com
+amazon.co.jp##._bXVsd_container_GMk6b, .sbx-desktop
+forlumineoner.com
+puwpush.com
+||richshredinger.com^
+||poisism.com^
+||ntvpevnts.com^
+||syndication.exosrv.com^$important
+||forflygonom.com^
+||outsliggooa.com^
+||javsex.to/wp-admin/*$domain=javsex.to
+||a0a18dc255.1772c9ffd2.com^
+##div._ciw-widget._ciw__b._ciw__r._ciw-show__r._ciw-show__b:last-child > iframe._ciw-iframe
+||cdn.adx1.com^
+highporn.net##div._ciw-widget._ciw__b._ciw__r._ciw-show__r._ciw-show__b:last-child
+##div._ciw-widget._ciw-widget__compact._ciw__b._ciw__r._ciw-show__r._ciw-show__b:last-child
+###avyc
+techgadgetsy.com
+about:blank$domain=av01.tv
+softcobra.com###myModal
+av01.tv###tile-ad
+search.yahoo.co.jp##.PopularTweet_PopularTweet__-JP0H
+softwarecrackguru.com###gourabblock
+google.com##.BDGSxf
+!他の人はこちらも検索
+google.com##.STJXQd
+!トップニュース
+google.com##wtFsOb
+!話題の検索キーワード
+google.com##li.sbct:has(.sb33.sbic)
+||api.nicoad.nicovideo.jp^$app=jp.nicovideo.android,important
+dic.nicovideo.jp##.res_reaction
+###app-follow-banner
+m.yahoo.co.jp##.sc-1h0bpco-0, .isCFGK
+m.yahoo.co.jp##.sc-1hxz2a0-0, .fBzvHZ
+m.yahoo.co.jp##.sc-ifrs8z-0, .iTKmKi
+m.yahoo.co.jp##.sc-kcp5rz-0, .bDlJsU
+m.yahoo.co.jp##.sc-12o2w6r-0, .dJLHUR
+m.yahoo.co.jp##.sc-17lllmf-0, .hUUDew
+m.yahoo.co.jp###st_all > div > div.All_StreamAll__content__GCH_X > section:last-child > div:last-child > ul.Quriosity_Quriosity__2SV48:first-child > li.Quriosity_Quriosity__listItem__pgvYR:nth-child(13)
+live.nicovideo.jp##.___akashic-game-view-layer___ROWV8, .ga-ns-akashic-game-view-layer, .___akashic-game-view-layer___Smsgz
+amazon.co.jp###desktop-grid-2-AB
+amazon.co.jp###gwm-Deck-btf
+amazon.co.jp###gw-desktop-herotator
+hattatu-matome.ldblog.jp##div.container:nth-child(3) > div.container-inner > div.content:first-child > aside.section-box:nth-child(25)
+hattatu-matome.ldblog.jp##div.container:nth-child(3) > div.container-inner > div.content:first-child > aside.section-box:nth-child(24) > div.plugin-free_area.plugin-box.free-area-none-border
+hattatu-matome.ldblog.jp##div.container:nth-child(3) > div.container-inner > div.content:first-child > aside.section-box:last-child
+hattatu-matome.ldblog.jp##div.container:nth-child(3) > div.container-inner > div.content:first-child > aside.section-box.popular-slider-list-box:nth-child(34)
+hattatu-matome.ldblog.jp##div.container:nth-child(3) > div.container-inner > div.content:first-child > section.section-box:nth-child(22)
+hattatu-matome.ldblog.jp##div.container:nth-child(3) > div.container-inner > div.content:first-child > aside.section-box:nth-child(8)
+hattatu-matome.ldblog.jp##div.container:nth-child(3) > div.container-inner > div.content:first-child > aside.section-box:nth-child(7)
+hattatu-matome.ldblog.jp###recent_comments_9568516
+hattatu-matome.ldblog.jp##div.container:nth-child(3) > div.container-inner > div.content:first-child > aside.section-box:nth-child(15) > div.plugin-free_area.plugin-box.free-area-none-border
+hattatu-matome.ldblog.jp##div.container:nth-child(3) > div.container-inner > div.content:first-child > aside.section-box:nth-child(13)
+kankeinai.blog.jp##div.container:nth-child(3) > div.container-inner > div.content:first-child > aside.section-box:nth-child(19)
+kankeinai.blog.jp##div.container:nth-child(3) > div.container-inner > div.content:first-child > aside.section-box:nth-child(23)
+kankeinai.blog.jp##div.container:nth-child(3) > div.container-inner > div.content:first-child > aside.section-box:nth-child(22)
+kankeinai.blog.jp##div.container:nth-child(3) > div.container-inner > div.content:first-child > aside.section-box:nth-child(7)
+blog.livedoor.jp##div.container:nth-child(3) > div.container-inner > div.content:first-child > aside.section-box:nth-child(19)
+blog.livedoor.jp##div.container:nth-child(3) > div.container-inner > div.content:first-child > aside.section-box:nth-child(18)
+blog.livedoor.jp##div.container:nth-child(3) > div.container-inner > div.content:first-child > aside.section-box:nth-child(17)
+de-baystars.doorblog.jp##div.container:nth-child(3) > div.container-inner > div.content:first-child > aside.section-box:nth-child(19)
+de-baystars.doorblog.jp##div.container:nth-child(3) > div.container-inner > div.content:first-child > aside.section-box:nth-child(18)
+de-baystars.doorblog.jp##div.container:nth-child(3) > div.container-inner > div.content:first-child > aside.section-box:nth-child(16)
+blog.livedoor.jp##div.container:nth-child(3) > div.container-inner > div.content:first-child > aside.section-box:nth-child(28)
+###jp-footer
+nanjpride.blog.jp##div.container:nth-child(3) > div.container-inner > div.content:first-child > aside.section-box:nth-child(27)
+hattatu-matome.ldblog.jp###lite_link
+google.co.jp##.q8sySb
+google.com##.q8sySb
+google.co.jp##.JwzvB
+dic.nicovideo.jp##.common-header-3mlk4i
+nicovideo.jp##.common-header-13w6jkz
+seiga.nicovideo.jp##.common-header-13w6jkz
+google.co.jp##.U8K5Lc
+google.com##.U8K5Lc
+m.yahoo.co.jp##.sc-15odo9n-9, .bvKpev
+m.yahoo.co.jp##.sc-15odo9n-1, .gKhxmm
+google.com##.hob1Ic
+google.co.jp##.hob1Ic
+m.yahoo.co.jp##.uPY7bYPWVuyyVStQBWnJ, .PcTxgqEX6bmxXIrVd5ob
+m.yahoo.co.jp##.YEPqldr9G8AAKa5ibIht
+m.yahoo.co.jp##.HDWj1_Y62npl1ih9grrq
+m.yahoo.co.jp##.nSPNo3u9KiZYzIk2pv1J
+blog.livedoor.jp##div.container:nth-child(3) > div.container-inner > div.content:first-child > aside.section-box:nth-child(11)
+hattatu-matome.ldblog.jp##.rec-title
+google.com##.plR5qb, .Y5MKCd
+google.com##.K1kkYe
